@@ -8,7 +8,7 @@ import { Toaster } from "sonner";
 import Login from "@/components/auth/LoginForm";
 export default function Home() {
   const { user, loading } = useAuth();
-  const [loginPage, setLoginPage] = useState(false);
+  const [loginPage, setLoginPage] = useState(true);
   const router = useRouter();
 
   if (!loading && user) {
