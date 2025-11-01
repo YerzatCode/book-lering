@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: linear-gradient(160deg, #fff 0%, #cdcdcd 100%);
   --foreground: #171717;
 }
 
@@ -12,15 +12,189 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.bg_gradient {
+  /* background: linear-gradient(-80deg, #a8cfff 0%, #73c0fc 100%); */
+  background: #fff;
+  -webkit-box-shadow: 0px 1px 19px 8px rgba(0, 115, 255, 0.2);
+  -moz-box-shadow: 0px 1px 19px 8px rgba(0, 115, 255, 0.2);
+  box-shadow: 0px 1px 19px 8px rgba(0, 115, 255, 0.2);
 }
 
+.card {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.02),
+    rgba(255, 255, 255, 0.01)
+  );
+  box-shadow: 0 6px 20px rgba(2, 6, 23, 0.06);
+  transition: background 0.3s, color 0.3s;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.nav_item {
+  transition: ease 0.3s;
+  border-radius: 10px;
+  padding: 4px;
+  opacity: 0.7;
+  overflow: hidden;
+  /* height: 50px; */
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.nav_card {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.02),
+    rgba(255, 255, 255, 0.01)
+  );
+  box-shadow: 0 6px 20px rgba(2, 6, 23, 0.06);
+  transition: background 0.3s, color 0.3s;
+  padding: 8px;
+  border-radius: 10px;
+}
+
+.nav_item:hover {
+  opacity: 1;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.02),
+    rgba(255, 255, 255, 0.01)
+  );
+  box-shadow: 0 6px 20px rgba(2, 6, 23, 0.06);
+}
+
+.sidebar-menu {
+  font-size: 22px;
+  font-weight: 700;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 100;
+  transition: 0.2s ease;
+  width: 69px;
+  height: 69px;
+}
+
+.gradient {
+  background: linear-gradient(135deg, #6ee7b7, #60a5fa);
+}
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --background: linear-gradient(180deg, #0f1724 0%, #0b1220 100%);
+    --foreground: #ededed;
+  }
+} */
+
+.none-select {
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
 body {
   background: var(--background);
+  background: no-repeat;
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  position: relative;
+  /* -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none; */
+}
+
+.prose {
+  @apply max-w-full mx-auto;
+}
+
+/* H1 */
+.prose h1 {
+  @apply text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-6;
+}
+
+/* H2 */
+.prose h2 {
+  @apply text-xl md:text-2xl lg:text-3xl font-semibold text-gray-800 mt-5 mb-4;
+}
+
+/* H3 */
+.prose h3 {
+  @apply text-lg md:text-xl lg:text-2xl font-semibold text-gray-700 mt-6 mb-3;
+}
+
+/* Paragraph */
+.prose p {
+  @apply text-base md:text-lg leading-relaxed text-gray-600 mb-4;
+}
+
+/* Strong text */
+.prose strong {
+  @apply font-semibold text-gray-900;
+}
+
+/* Links */
+.prose a {
+  @apply text-blue-600 underline font-medium hover:text-blue-800;
+}
+
+/* Lists */
+.prose ul {
+  @apply list-disc ml-6 my-4 space-y-1;
+}
+.prose ol {
+  @apply list-decimal ml-6 my-4 space-y-1;
+}
+.prose li {
+  @apply text-gray-700 leading-relaxed;
+}
+
+/* Blockquote */
+.prose blockquote {
+  @apply border-l-4 border-blue-500 pl-4 italic text-gray-600 my-6;
+}
+
+/* Inline code */
+.prose code {
+  @apply bg-gray-100 px-1 py-0.5 rounded text-red-600 text-sm md:text-base;
+}
+
+/* Code blocks */
+.prose pre {
+  @apply bg-gray-900 text-gray-200 p-3 md:p-4 rounded-lg overflow-x-auto my-6 text-sm md:text-base;
+}
+
+pre code {
+  color: white !important;
+  background-color: transparent !important;
+}
+.prose code.language-bash {
+  @apply bg-transparent px-1 py-0.5 rounded text-white text-sm;
+}
+
+/* Images */
+.prose img {
+  @apply rounded-lg shadow-md my-6 w-full md:w-auto;
+}
+
+/* Tables */
+.prose table {
+  @apply border-collapse w-full my-6 text-sm md:text-base;
+}
+
+.prose th {
+  @apply border px-2 md:px-4 py-2 bg-gray-100 font-semibold;
+}
+
+.prose td {
+  @apply border px-2 md:px-4 py-2;
+}
+
+@media screen and (max-width: 768px) {
+  .card {
+    padding: 10px;
+  }
 }

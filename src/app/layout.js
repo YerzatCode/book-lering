@@ -6,7 +6,7 @@ import { Toaster } from "sonner";
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="w-full h-screen">
+      <body className="w-full h-full">
         <AuthProvider>{children}</AuthProvider>
       </body>
     </html>

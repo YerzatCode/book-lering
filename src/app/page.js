@@ -12,7 +12,7 @@ export default function Home() {
   const router = useRouter();
 
   if (!loading && user) {
-    router.push("/dashbord");
+    router.replace("/courses");
     return null;
   }
 
