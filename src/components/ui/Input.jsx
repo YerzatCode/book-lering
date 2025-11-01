@@ -5,7 +5,7 @@ function Input({ type, placeholder }) {
     <input
       type={type}
       placeholder={placeholder}
-      className="w-[300px] h-[40px] rounded-sm p-2"
+      className="w-[300px] h-[40px] bg-blue-300 rounded-sm p-2"
     />
   );
 }
