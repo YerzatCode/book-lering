@@ -12,10 +12,18 @@ async function Course({ params }) {
     .eq("id", id)
     .single();
 
-  const { data: lessons } = await supabase
+  const { data: lectures } = await supabase
     .from("lessons")
     .select("")
     .eq("course_id", id)
+    .eq("type", "lecture")
+    .order("order_pos", { ascending: true });
+
+  const { data: laboratory } = await supabase
+    .from("lessons")
+    .select("")
+    .eq("course_id", id)
+    .eq("type", "laboratory")
     .order("order_pos", { ascending: true });
 
   return (
@@ -29,7 +37,22 @@ async function Course({ params }) {
       <h2 className="text-2xl font-semibold mb-4">Лекции</h2>
 
       <ul className="space-y-3">
-        {lessons?.map((lesson, index) => (
+        {lectures?.map((lesson, index) => (
+          <li key={lesson.id}>
+            <Link
+              className="block hover:bg-gray-100 pl-3 text-blue-500 text-xl"
+              href={`/courses/course/${id}/lesson/${lesson.id}`}
+            >
+              <span>{index + 1}. </span>
+              {lesson.title}
+            </Link>
+          </li>
+        ))}
+      </ul>
+      <h2 className="text-2xl font-semibold mb-4 mt-5">Лаборотория</h2>
+
+      <ul className="space-y-3">
+        {laboratory?.map((lesson, index) => (
           <li key={lesson.id}>
             <Link
               className="block hover:bg-gray-100 pl-3 text-blue-500 text-xl"

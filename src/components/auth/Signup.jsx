@@ -3,8 +3,9 @@ import Input from "../ui/Input";
 import Button from "../ui/Button";
 import { toast } from "sonner";
 import { supabase } from "@/api/supabase";
+import Link from "next/link";
 
-function Signup() {
+function Signup({ setLogin }) {
   const handleSignup = async (e) => {
     e.preventDefault();
     const email = e.target[0].value;
@@ -19,11 +20,11 @@ function Signup() {
       email,
       password,
     });
-    if (data) {
-      toast.success("Success. Please login now");
-    }
     if (error) {
-      toast.error("Unable to sign up. Please try again");
+      return toast.error("Ошибка при создание аккаунта");
+    }
+    if (data) {
+      return toast.success("Успешно создан аккаунт! Проверь почту");
     }
   };
   return (
@@ -32,9 +33,24 @@ function Signup() {
         onSubmit={handleSignup}
         className="flex flex-col justify-center items-center h-full gap-2"
       >
-        <Input type="email" placeholder="Email" />
-        <Input type="password" placeholder="Password" />
+        <h2 className="text-2xl font-bold">Создать аккаунт</h2>
+        <p className="opacity-70">Создай аккаунт чтобы войти</p>
+        <Input type="email" placeholder="Почта" />
+        <Input type="password" placeholder="Пароль" />
         <Button>Создать аккаунт</Button>
+        <span>
+          Перейти чтобы войти в{" "}
+          <a
+            href="#"
+            onClick={() => {
+              setLogin(true);
+            }}
+            className="text-blue-500"
+          >
+            аккаунт
+          </a>
+          .
+        </span>
       </form>
     </div>
   );

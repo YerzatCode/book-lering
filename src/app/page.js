@@ -8,7 +8,7 @@ import { Toaster } from "sonner";
 import Login from "@/components/auth/LoginForm";
 export default function Home() {
   const { user, loading } = useAuth();
-  const [loginPage, setLoginPage] = useState(true);
+  const [loginPage, setLoginPage] = useState(false);
   const router = useRouter();
 
   if (!loading && user) {
@@ -17,10 +17,16 @@ export default function Home() {
   }
 
   return (
-    <main className="w-full h-full">
+    <main className="w-full h-screen">
       <Toaster position="top-right" />
 
-      {loading ? <h1>Loading...</h1> : !loginPage ? <Signup /> : <Login />}
+      {loading ? (
+        <h1>Loading...</h1>
+      ) : !loginPage ? (
+        <Signup setLogin={setLoginPage} />
+      ) : (
+        <Login setLogin={setLoginPage} />
+      )}
     </main>
   );
 }

@@ -12,13 +12,10 @@ async function Dashbord() {
 
       <ul className="grid grid-cols-3 max-md:grid-cols-1 max-lg:grid-cols-2">
         {courses?.map((c) => (
-          <li
-            key={c.id}
-            className="card h-[200px] flex flex-col justify-between"
-          >
+          <li key={c.id} className="card gap-4 flex flex-col justify-between">
             <div>
               <h2 className="font-semibold text-2xl">{c.title}</h2>
-              <p>{c.description}</p>
+              {/* <p>{c.description}</p> */}
             </div>
             <Link
               className="block font-bold text-xl text-white hover:bg-[#41adff] w-full bg-[#1c9dff] rounded-2xl text-center p-3"
