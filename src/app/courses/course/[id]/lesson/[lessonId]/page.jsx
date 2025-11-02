@@ -41,11 +41,11 @@ async function Lesson({ params }) {
         lectures={lectures}
       />
       <div className="px-9 max-w-5xl mx-auto mt-10 max-lg:p-2">
-        <header className="flex gap-x-5 mb-4">
+        <header className="grid grid-cols-10  mb-4">
           <div className="w-16 h-16 gradient rounded-2xl flex items-center justify-center font-bold text-3xl">
             {lesson?.title[0]}
           </div>
-          <div className="flex flex-col justify-between ">
+          <div className="flex flex-col justify-between col-span-9 ">
             <h2 className="text-2xl font-bold">{lesson?.title}</h2>
             <p className="text-base text-[#696969]">{lesson?.slug}</p>
           </div>

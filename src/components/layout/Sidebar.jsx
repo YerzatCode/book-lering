@@ -26,6 +26,7 @@ function Sidebar({ id, lectures, course, laboratory }) {
           duration-300 
           lg:left-5
           max-lg:bg-white 
+          mb-20
           max-lg:fixed 
           max-lg:top-17 
           max-lg:h-full 
@@ -73,6 +74,15 @@ function Sidebar({ id, lectures, course, laboratory }) {
             ))}
           </div>
         </div>
+        <h4 className="nav_card flex">
+          <Link
+            href={`/courses/course/test`}
+            className="bg-blue-400 rounded-md text-white p-2 w-full text-center font-semibold"
+          >
+            Проити тест
+          </Link>
+        </h4>
+        <h4 className="nav_card mb-10">__________________________</h4>
       </nav>
     </>
   );
