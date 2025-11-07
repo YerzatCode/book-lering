@@ -23,6 +23,7 @@ async function Dashbord() {
             >
               Перейти
             </Link>
+            <p>Автор: Пазылханов Ерзат</p>
           </li>
         ))}
       </ul>
