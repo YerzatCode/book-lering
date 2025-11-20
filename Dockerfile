@@ -1,34 +1,32 @@
-# --- STAGE 1: Build ---
+# ----- Stage 1: Build -----
 FROM node:18-alpine AS builder
 
 WORKDIR /app
 
 # Устанавливаем зависимости
-COPY package.json package-lock.json* ./
+COPY package*.json ./
 RUN npm install
 
-# Копируем весь проект
+# Копируем остальное приложение
 COPY . .
 
-# Билдим проект
+# Собираем Next.js в standalone режиме
 RUN npm run build
 
-
-
-# --- STAGE 2: Production ---
+# ----- Stage 2: Run -----
 FROM node:18-alpine AS runner
-
 WORKDIR /app
 
-# Отключаем телеметрию Next.js
-ENV NEXT_TELEMETRY_DISABLED=1
+ENV NODE_ENV=production
 
-# Копируем только нужное из builder
-COPY --from=builder /app/package.json ./
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/.next ./.next
+# Копируем собранное приложение
+COPY --from=builder /app/.next/standalone ./
+COPY --from=builder /app/.next/static ./public/_next/static
 COPY --from=builder /app/public ./public
 
-EXPOSE 3000
+# Cloud Run использует порт 8080
+ENV PORT=8080
+EXPOSE 8080
 
-CMD ["npm", "start"]
+# Стартуем сервер
+CMD ["node", "server.js"]
