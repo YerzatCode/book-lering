@@ -4,12 +4,12 @@ steps:
     args:
       [
         "build",
+        "--build-arg",
+        "NEXT_PUBLIC_SUPABASE_URL=https://zpwyelmynnskguecgryc.supabase.co",
+        "--build-arg",
+        "NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inpwd3llbG15bm5za2d1ZWNncnljIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjE4MTk1NDEsImV4cCI6MjA3NzM5NTU0MX0.MxbZT_RSiJ9jG9Ci3LFalLo7FiWLq4ntyBBVRtEZzFk",
         "-t",
         "gcr.io/$PROJECT_ID/book-lering",
-        "--build-arg",
-        "NEXT_PUBLIC_SUPABASE_URL=$NEXT_PUBLIC_SUPABASE_URL",
-        "--build-arg",
-        "NEXT_PUBLIC_SUPABASE_ANON_KEY=$NEXT_PUBLIC_SUPABASE_ANON_KEY",
         ".",
       ]
 
